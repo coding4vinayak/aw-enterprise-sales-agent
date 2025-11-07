@@ -29,8 +29,8 @@ services:
 
   backend:
     build:
-      context: ../../..
-      dockerfile: infra/docker/Dockerfile.backend
+      context: ./backend
+      dockerfile: ../infra/docker/Dockerfile.backend
     ports:
       - "8000:8000"
     environment:
@@ -45,18 +45,8 @@ services:
       redis:
         condition: service_healthy
     volumes:
-      - ../../backend/uploads:/app/uploads
-
-  frontend:
-    build:
-      context: ../../..
-      dockerfile: infra/docker/Dockerfile.frontend
-    ports:
-      - "3000:3000"
-    environment:
-      - VITE_API_URL=http://backend:8000
-    depends_on:
-      - backend
+      - ./backend/uploads:/app/uploads
+    working_dir: /app
 
   jaeger:
     image: jaegertracing/all-in-one:latest
