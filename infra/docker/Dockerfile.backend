@@ -9,9 +9,12 @@ RUN apt-get update && apt-get install -y \
     postgresql-server-dev-all \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy the minimal requirements file for Docker build
-COPY requirements_minimal.txt .
-RUN pip install --no-cache-dir --timeout=300 --default-timeout=300 -r requirements_minimal.txt
+# Copy the requirements file and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir --timeout=300 --default-timeout=300 -r requirements.txt
+
+# Install additional packages that may be needed
+RUN pip install psycopg2-binary
 
 # Copy the application code
 COPY . .
