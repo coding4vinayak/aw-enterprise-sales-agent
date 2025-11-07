@@ -27,8 +27,8 @@ langchain==0.2.16
 langgraph==0.2.26
 openai==1.51.0
 langchain-community==0.2.16
-langchain-openai==0.1.21
-langchain-core==0.2.38
+langchain-openai==0.2.0  # Changed to compatible version
+langchain-core==0.2.39  # Changed to compatible version
 tiktoken==0.7.0
 lxml==5.3.0
 unstructured==0.15.9
@@ -37,3 +37,4 @@ faiss-cpu==1.8.0
 sentence-transformers==3.1.0
 pygithub==2.4.0
 sentry-sdk[fastapi]==2.14.0
+weaviate-client==4.7.0  # Changed to available version
