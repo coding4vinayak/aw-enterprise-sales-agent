@@ -4,7 +4,8 @@ import {
   UserGroupIcon, 
   ChatBubbleLeftRightIcon, 
   CalendarIcon, 
-  ChartBarIcon 
+  ChartBarIcon,
+  Cog6ToothIcon
 } from '@heroicons/react/24/outline';
 import { api } from '../../services/api';
 import { Lead, AgentExecution } from '../../types';
