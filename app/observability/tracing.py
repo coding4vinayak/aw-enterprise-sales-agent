@@ -43,8 +43,13 @@ def instrument_app(app):
     # OpenAI instrumentation if available
     try:
         OpenAIInstrumentor().instrument()
-    except:
-        pass  # OpenAI may not be installed
+    except ImportError:
+        # OpenAI may not be installed or available
+        pass
+    except Exception as e:
+        # Log any other instrumentation errors
+        import logging
+        logging.warning(f"Failed to instrument OpenAI: {str(e)}")
 
 def trace_agent_execution(agent_type: str, tenant_id: str, lead_id: str):
     """Decorator to trace agent execution"""
